@@ -35,16 +35,18 @@ function rows(ticketinDiscussion){
 
 
 function parseNumbers(bingoTicketStr){
-    const ticketStr =bingoTicketStr;
+    const ticketStr = bingoTicketStr;
     let tNumbers = [];
     let checkIndex = 0;
     const results = [];
 
     for (let index = 0; index < ticketStr.length; index+=2) {
         checkIndex ++
-        tNumbers.push({
-            number: Number.parseInt(`${ticketStr[index]}${ticketStr[index + 1]}`, 10)
-        })
+        if(Number.parseInt(`${ticketStr[index]}${ticketStr[index + 1]}`, 10)<= 90){
+            tNumbers.push({
+                number: Number.parseInt(`${ticketStr[index]}${ticketStr[index + 1]}`, 10)
+            })
+        }
 
         if(checkIndex === 15){
             results.push(tNumbers)
